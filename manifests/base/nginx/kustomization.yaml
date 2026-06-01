@@ -10,9 +10,3 @@ configMapGenerator:
   - name: nginx-proxy-config
     files:
       - config/nginx.conf
-
-secretGenerator:
-  - name: nginx-proxy-tls
-    files:
-      - config/nginx-selfsigned.crt
-      - config/nginx-selfsigned.key
