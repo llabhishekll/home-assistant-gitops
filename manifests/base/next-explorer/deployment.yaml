@@ -38,7 +38,7 @@ spec:
             - name: cache-volume
               mountPath: /cache
             - name: host-volume
-              mountPath: /home/appuser
+              mountPath: /mnt/mycloud/Shared
 
           livenessProbe:
             httpGet:
