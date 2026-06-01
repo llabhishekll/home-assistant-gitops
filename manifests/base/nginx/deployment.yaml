@@ -36,11 +36,11 @@ spec:
             # Mount the TLS certificates from the secret volume
             - name: tls-volume
               mountPath: /etc/nginx/ssl/nginx-selfsigned.crt
-              subPath: nginx-selfsigned.crt
+              subPath: tls.crt
 
             - name: tls-volume
               mountPath: /etc/nginx/ssl/nginx-selfsigned.key
-              subPath: nginx-selfsigned.key
+              subPath: tls.key
 
           resources:
             requests:
