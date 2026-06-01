@@ -1,0 +1,65 @@
+# Nginx NodePort
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-proxy-service
+spec:
+  type: NodePort
+  ports:
+    - port: 80
+      nodePort: 30080
+---
+# Home Assistant NodePort
+apiVersion: v1
+kind: Service
+metadata:
+  name: home-assistant-service
+spec:
+  type: NodePort
+  ports:
+    - port: 8123
+      nodePort: 30123
+---
+# Uptime Kuma NodePort
+apiVersion: v1
+kind: Service
+metadata:
+  name: uptime-kuma-service
+spec:
+  type: NodePort
+  ports:
+    - port: 3001
+      nodePort: 30001 
+---
+# Next Explorer NodePort
+apiVersion: v1
+kind: Service
+metadata:
+  name: next-explorer-service
+spec:
+  type: NodePort
+  ports:
+    - port: 3081
+      nodePort: 30081
+---
+# Immich NodePort
+apiVersion: v1
+kind: Service
+metadata:
+  name: immich-service
+spec:
+  type: NodePort
+  ports:
+    - port: 2283
+      nodePort: 32283
+---
+# Jellyfin NodePort
+apiVersion: v1
+kind: Service
+metadata:
+  name: jellyfin-service
+spec:
+  type: NodePort
+  ports:
+    - port: 8096
+      nodePort: 30096

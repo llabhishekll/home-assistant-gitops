@@ -1,0 +1,47 @@
+# Nginx LoadBalancer
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-proxy-service
+spec:
+  type: LoadBalancer
+---
+# Home Assistant LoadBalancer
+apiVersion: v1
+kind: Service
+metadata:
+  name: home-assistant-service
+spec:
+  type: LoadBalancer
+---
+# Uptime Kuma LoadBalancer
+apiVersion: v1
+kind: Service
+metadata:
+  name: uptime-kuma-service
+spec:
+  type: LoadBalancer
+---
+# Next Explorer LoadBalancer
+apiVersion: v1
+kind: Service
+metadata:
+  name: next-explorer-service
+spec:
+  type: LoadBalancer
+---
+# Immich LoadBalancer
+apiVersion: v1
+kind: Service
+metadata:
+  name: immich-service
+spec:
+  type: LoadBalancer
+---
+# Jellyfin LoadBalancer
+apiVersion: v1
+kind: Service
+metadata:
+  name: jellyfin-service
+spec:
+  type: LoadBalancer

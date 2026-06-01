@@ -1,0 +1,17 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# Overrides the namespace for all resources included below
+namespace: platform
+
+resources:
+  - namespace.yaml
+  - nginx/
+  - whoami/
+  - home-basket/
+  - home-assistant/
+  - homepage/
+  - immich/
+  - jellyfin/
+  - next-explorer/
+  - uptime-kuma/

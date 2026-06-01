@@ -1,0 +1,19 @@
+title: Home Server Dashboard
+timezone: Asia/Kolkata
+background:
+  image: https://images.unsplash.com/photo-1550684848-fac1c5b4e853
+  blur: sm
+
+layout:
+  Media & Photos:
+    style: row
+    columns: 2
+  Smart Home:
+    style: row
+    columns: 2
+  Productivity & Files:
+    style: row
+    columns: 1 
+  Infrastructure:
+    style: row
+    columns: 1

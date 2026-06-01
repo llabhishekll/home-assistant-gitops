@@ -1,0 +1,33 @@
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+
+metadata:
+  name: home-basket-image
+  namespace: flux-system
+  labels:
+    app: home-basket
+
+spec:
+  image: ghcr.io/llabhishekll/home-basket
+  interval: 1m0s
+  secretRef:
+    name: ghcr-login # Secret on k8 cluster
+
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImagePolicy
+
+metadata:
+  name: home-basket-policy
+  namespace: flux-system
+  labels:
+    app: home-basket
+
+spec:
+  imageRepositoryRef:
+    name: home-basket-image
+  policy:
+    # Remember: Alphabetical sorting only works properly for Git tags are semantic or timestamped!
+    alphabetical:
+      order: asc

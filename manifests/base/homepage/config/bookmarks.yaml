@@ -1,0 +1,20 @@
+- Developer:
+    - GitHub:
+        - abbr: GH
+          href: https://github.com/llabhishekll
+          icon: github
+    - MyCloud:
+        - abbr: MYCLOUD
+          href: http://mycloud.local
+          icon: wd-mycloud.svg
+
+
+- Infrastructure Tools:
+    - Nginx Documentation:
+        - abbr: NGINX
+          href: https://nginx.org/en/docs/
+          icon: nginx
+    - Unsplash Backgrounds:
+        - abbr: UNS
+          href: https://unsplash.com
+          icon: mdi-image

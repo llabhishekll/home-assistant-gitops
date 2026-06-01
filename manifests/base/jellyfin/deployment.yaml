@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: jellyfin
+  labels:
+    app: jellyfin
+
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: jellyfin
+  template:
+    metadata:
+      labels:
+        app: jellyfin
+    spec:
+      containers:
+        - name: jellyfin
+          image: jellyfin/jellyfin:latest
+
+          env:
+            - name: TZ
+              value: "Asia/Kolkata"
+
+          ports:
+            - containerPort: 8096
+              name: http
+
+          volumeMounts:
+            - name: config-volume
+              mountPath: /config
+            - name: cache-volume
+              mountPath: /cache
+            - name: host-volume
+              mountPath: /media
+              readOnly: true
+
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8096
+            initialDelaySeconds: 30
+            periodSeconds: 15
+            failureThreshold: 3
+
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "250m"
+            limits:
+              memory: "4Gi"
+              cpu: "2000m"
+
+      volumes:
+        - name: config-volume
+          persistentVolumeClaim:
+            claimName: jellyfin-config-pvc
+        - name: cache-volume
+          emptyDir: {}
+        - name: host-volume
+          hostPath:
+            path: /tmp/jellyfin-host-volume
+            type: DirectoryOrCreate

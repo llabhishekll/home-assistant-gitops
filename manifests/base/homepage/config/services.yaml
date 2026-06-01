@@ -1,0 +1,33 @@
+- Media & Photos:
+    - Jellyfin:
+        icon: jellyfin
+        href: /jellyfin/
+        description: Media Server
+
+    - Immich:
+        icon: immich
+        href: /immich/
+        description: Photo Backup
+
+- Smart Home:
+    - Home Assistant:
+        icon: home-assistant
+        href: /homeassistant/
+        description: Home Automation
+
+    - Home Basket:
+        icon: mdi-basket
+        href: /homebasket/
+        description: Household Inventory
+
+- Productivity & Files:
+    - NextExplorer:
+        icon: nextexplorer.png
+        href: /nextexplorer/
+        description: File Manager
+
+- Infrastructure:
+    - Uptime Kuma:
+        icon: uptime-kuma
+        href: /kuma/
+        description: Status Monitoring

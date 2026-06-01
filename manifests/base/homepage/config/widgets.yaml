@@ -1,0 +1,12 @@
+# Existing system resources widget
+- resources:
+    cpu: true
+    memory: true
+    disk: /
+
+# Clean datetime widget matching your local timezone
+- datetime:
+    format:
+      timeStyle: short
+      dateStyle: long
+    hourCycle: 24

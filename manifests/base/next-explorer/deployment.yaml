@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: next-explorer
+  labels:
+    app: next-explorer
+
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: next-explorer
+  template:
+    metadata:
+      labels:
+        app: next-explorer
+    spec:
+      containers:
+        - name: next-explorer
+          image: nxzai/explorer:latest
+
+          env:
+            - name: TZ
+              value: "Asia/Kolkata"
+            - name: NODE_ENV
+              value: "production"
+
+          ports:
+            - containerPort: 3000
+              name: http
+
+          volumeMounts:
+            - name: config-volume
+              mountPath: /config
+            - name: cache-volume
+              mountPath: /cache
+            - name: host-volume
+              mountPath: /mnt/
+
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 30
+            periodSeconds: 15
+            failureThreshold: 3
+
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
+            limits:
+              memory: "1Gi"
+              cpu: "1000m"
+
+      volumes:
+        - name: config-volume
+          persistentVolumeClaim:
+            claimName: next-explorer-config-pvc
+        - name: cache-volume
+          emptyDir: {}
+        - name: host-volume
+          hostPath:
+            path: /tmp/next-explorer-host-volume
+            type: DirectoryOrCreate

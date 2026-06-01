@@ -1,0 +1,60 @@
+# Jellyfin Volume Override
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jellyfin
+spec:
+  # Added to satisfy strict schema validation
+  selector:
+    matchLabels:
+      app: jellyfin
+  template:
+    spec:
+      containers:
+        - name: jellyfin 
+      volumes:
+        - name: host-volume
+          hostPath:
+            path: /tmp/dev-k3s-mounts/immich-host-volume
+            type: DirectoryOrCreate
+
+---
+# NextExplorer Volume Override
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: next-explorer
+spec:
+  # Added to satisfy strict schema validation
+  selector:
+    matchLabels:
+      app: next-explorer
+  template:
+    spec:
+      containers:
+        - name: next-explorer
+      volumes:
+        - name: host-volume
+          hostPath:
+            path: /tmp/dev-k3s-mounts/next-explorer-host-volume
+            type: DirectoryOrCreate
+---
+# Immich Volume Override
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: immich
+spec:
+  # Added to satisfy strict schema validation
+  selector:
+    matchLabels:
+      app: immich
+  template:
+    spec:
+      containers:
+        - name: server
+      volumes:
+        - name: host-volume
+          hostPath:
+            path: /tmp/dev-k3s-mounts/jellyfin-host-volume
+            type: DirectoryOrCreate
